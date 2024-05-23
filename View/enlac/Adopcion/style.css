@@ -1,0 +1,58 @@
+* {
+    margin:0;
+    padding:0;
+    border: 0;
+    font: size 100%;
+}
+body {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.head{
+    display: flex;
+  align-items: center;
+  height: 53px;
+  background: #FFFFFF;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0; 
+}
+.banner{
+    background:#FFDE59; 
+    color:#504540; 
+    font-weight:bold;
+    padding:25px 700px;
+}
+.navbar{
+    display: flex;
+  align-items: center; /* Alinea los elementos horizontalmente */
+  justify-content: left; /* Centra el menú horizontalmente */
+  margin-top: 73px; /* Añade un margen superior para evitar que el menú se superponga al banner */
+  background: #FFFFFF;
+  position: fixed;
+  width: 100%;
+  z-index: 99; /* Asegura que el menú esté detrás del banner */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a{
+    margin-left: 30px;
+    display: block;
+    padding: 20px 20px;
+    color:#737373;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+.header {
+    height: 50vh;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    background: url(../../Imagen/banner2.jpg) no-repeat;
+    background-size: cover;
+    position:relative;
+} 
+

@@ -56,6 +56,9 @@ body {
     position:relative;
 } 
 
+
+
+
 .align-right {
   position: absolute; /* Posición absoluta para alinear el texto */
   top: 20px;
