@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <div class=bannerimg></div>
+</head>
+<body>
+    <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <div class="banner">PetGroom</div>
+                    <button type="button" class="navbar-toggle collapsed"
+                            data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                            aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" th:href="@{/}">Inicio</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li sec:authorize="isAuthenticated()">
+                            <a class="navbar-brand"> <a th:href="@{/usuario/perfil}">Bienvenido <span sec:authentication="principal.username"></span></a></a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Cerrar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>     
+ <br>
+<br>
+<br>
+<br>
+
+
+        <h1>Perfil de [[${usuario.nombre}]]</h1>
+
+        <h2>Mascotas en Adopción</h2>
+        <div class="row">
+            <div class="col-md-4" th:each="mascota : ${mascotasPropias}">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${mascota.nombre}">Nombre</h5>
+                        <p class="card-text">Especie: <span th:text="${mascota.especie}">Especie</span></p>
+                        <p class="card-text">Género: <span th:text="${mascota.genero}">Género</span></p>
+                        <p class="card-text">Edad: <span th:text="${mascota.edad}">Edad</span></p>
+                        <p class="card-text">Descripción: <span th:text="${mascota.descripcion}">Descripción</span></p>
+
+                        <h6>Interesados</h6>
+                        <ul>
+                            <li th:each="interesado : ${mascota.interesados}" th:text="${interesado.nombre} + ' ' + ${interesado.apellido}">Nombre del Interesado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Mascota</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Editar Mascota</h1>
+    <form th:action="@{/mascotas/{id}/editar(id=${mascota.id})}" method="post">
+        <div class="form-group">
+            <label for="nombreMascota">Nombre de la Mascota</label>
+            <input type="text" class="form-control" id="nombreMascota" name="nombre" th:value="${mascota.nombre}" required>
+        </div>
+        <div class="form-group">
+            <label for="especieMascota">Especie</label>
+            <select class="form-control" id="especieMascota" name="especie" th:value="${mascota.especie}" required>
+                <option value="Gato" th:selected="${mascota.especie == 'Gato'}">Gato</option>
+                <option value="Perro" th:selected="${mascota.especie == 'Perro'}">Perro</option>
+                <option value="Otro" th:selected="${mascota.especie == 'Otro'}">Otro</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="generoMascota">Género</label>
+            <select class="form-control" id="generoMascota" name="genero" th:value="${mascota.genero}" required>
+                <option value="Macho" th:selected="${mascota.genero == 'Macho'}">Macho</option>
+                <option value="Hembra" th:selected="${mascota.genero == 'Hembra'}">Hembra</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="edadMascota">Edad</label>
+            <input type="number" class="form-control" id="edadMascota" name="edad" th:value="${mascota.edad}" min="1" max="20" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcionMascota">Descripción</label>
+            <textarea class="form-control" id="descripcionMascota" name="descripcion" rows="3" required th:text="${mascota.descripcion}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
+</body>
+</html>

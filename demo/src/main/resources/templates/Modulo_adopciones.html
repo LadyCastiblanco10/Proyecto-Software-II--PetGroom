@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <div class=bannerimg2></div>
+    <title>Adopciones</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Adopciones</h1>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <div class="banner">PetGroom</div>
+                    <button type="button" class="navbar-toggle collapsed"
+                            data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                            aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" th:href="@{/}">Inicio</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li sec:authorize="isAuthenticated()">
+                            <a class="navbar-brand"><a th:href="@{/usuario/perfil}">Bienvenido <span sec:authentication="principal.username"></span></a></a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Cerrar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-md-14 text-left">
+                <button class="btn-success" data-toggle="modal" data-target="#adoptionModal">Dar en adopción</button>
+            </div>
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="adoptionModal" tabindex="-1" role="dialog" aria-labelledby="adoptionModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="adoptionModalLabel">Formulario de Adopción</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/mascotas}" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="nombreMascota">Nombre de la Mascota</label>
+                                <input type="text" class="form-control" id="nombreMascota" name="nombre" required>              
+    </div>
+   
+        <div class="form-group">
+            <label for="especieMascota">Especie</label>
+            <select class="form-control" id="especieMascota" name="especie" required>
+                <option value="">Selecciona una especie</option>
+                <option value="Gato">Gato</option>
+                <option value="Perro">Perro</option>
+                <option value="Otro">Otro</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="generoMascota">Género</label>
+            <select class="form-control" id="generoMascota" name="genero" required>
+                <option value="">Selecciona un género</option>
+                <option value="Macho">Macho</option>
+                <option value="Hembra">Hembra</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="edadMascota">Edad</label>
+            <input type="number" class="form-control" id="edadMascota" name="edad" min="1" max="20" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcionMascota">Descripción</label>
+            <textarea class="form-control" id="descripcionMascota" name="descripcion" rows="3" required></textarea>
+        </div>
+        <img src="@{/banner2.jpg}" alt="">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lista de Mascotas -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Mascotas Disponibles</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div th:each="mascota : ${mascotas}" class="thumbnail">
+                            
+                            <div class="caption">
+                                <h3 th:text="${mascota.nombre}">Nombre de la Mascota</h3>
+                                <p th:text="${mascota.descripcion}">Descripción de la Mascota</p>
+                                <p><strong>Especie:</strong> <span th:text="${mascota.especie}"></span></p>
+                                <p><strong>Edad:</strong> <span th:text="${mascota.edad}"></span></p>
+                                <p><strong>Género:</strong> <span th:text="${mascota.genero}"></span></p>
+                                <form th:action="@{/mascotas/{id}/interesarse(id=${mascota.id})}" method="post" style="display:inline;" th:if="${#authentication.principal.username != mascota.duenio.email}">
+                                    <button class="btn btn-success" type="submit">Me interesa</button>
+                                </form>
+                                <a th:href="@{/mascotas/{id}/editar(id=${mascota.id})}" class="btn btn-warning" th:if="${#authentication.principal.username == mascota.duenio.email}">Editar</a>
+                                <form th:action="@{/mascotas/{id}/borrar(id=${mascota.id})}" method="post" style="display:inline;" th:if="${#authentication.principal.username == mascota.duenio.email}">
+                                    <button class="btn btn-danger" type="submit">Borrar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

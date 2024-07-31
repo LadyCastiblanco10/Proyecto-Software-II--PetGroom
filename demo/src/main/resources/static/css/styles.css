@@ -1,0 +1,267 @@
+* {
+  margin:0;
+  padding:0;
+  border: 0;
+  font: size 100%;
+}
+body {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.head{
+  display: flex;
+align-items: center;
+height: 53px;
+background: #FFFFFF;
+position: fixed;
+width: 100%;
+z-index: 100;
+top: 0; 
+}
+.banner{
+  background:#FFDE59; 
+  color:#504540; 
+  margin-left: -120px;
+  font-weight:bold;
+  padding:10px 700px;
+}
+
+.navbar{
+  background: #ffffff; 
+  padding: 0px; /* Espaciado interior */
+  display: flex; /* Alinea los elementos en línea */
+  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: left; 
+
+}
+
+.navbar a{
+  margin-left: 30px;
+  display: block;
+  padding: 20px 20px;
+  color:#1a1919;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.navbar a.navbar-brand {
+  font-family: 'Arial', sans-serif; /* Fuente */
+  font-size: 0.8em; /* Tamaño de la fuente */
+  color: rgb(223, 203, 203); /* Color del texto */
+  text-decoration: none; /* Sin subrayado */
+  margin-left: 15px; /* Espacio a la izquierda */
+}
+.navbar a.navbar-brand:hover {
+  color: #f1f1f1; /* Color del texto al pasar el ratón */
+}
+.bannerimg{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: 38vh;
+  background: url('../banini1.png') no-repeat;
+  background-size: cover;
+  position:relative;
+} 
+.bannerimg2{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: 40vh;
+  background: url('../Home3.jpg') no-repeat;
+  background-size: cover;
+  position:relative;
+}
+.header {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: 80vh;
+  background: url('../Img1.png') no-repeat;
+  background-size: cover;
+  position:relative;
+} 
+
+.align-right {
+position: absolute; /* Posición absoluta para alinear el texto */
+top: 20px;
+right: 40px;
+text-align: right;
+}
+
+.tittle {
+  font-size: 60px;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin-top: 100px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 600;
+  color: #FFFFFF;
+  
+}
+
+.text1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #FFFFFF;
+  font-family: Open-sans;
+  text-align: center;
+}
+.text2 {
+font-size: 16px;
+color: #FFFFFF;
+font-family: Open-sans;
+text-align: center;
+padding: 20px 40px;
+}
+
+.logo{
+  position: absolute;
+  top: 260px;
+  left: 190px;
+}
+.logo img{
+  width: 240px;
+}
+.image-container {
+position: absolute; /* Posición absoluta para las imágenes */
+bottom: 10px; /* Ajusta la posición vertical */
+left: 40%; /* Centra horizontalmente las imágenes */
+transform: translateX(-50%);/* Cambiado de space-around a space-between */
+display: flex; /* Configura el contenedor como un flexbox */
+justify-content: space-between;  
+}
+.image-container img:first-child {
+  margin-right: 53px; /* La primera imagen se alinea a la izquierda */
+}
+
+.image-container img:last-child {
+  margin-left: 300px; /* La última imagen se alinea a la derecha */
+}
+.image-container img {
+  width: 480px; /* Ajusta el tamaño según sea necesario */
+  height: auto;
+  transition: transform 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+.image-container img:hover {
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el mouse */
+}
+
+.contentt.intr {
+  text-align: left;
+  padding: 50px 100px;
+  
+ 
+}
+
+.titulo {
+  font-size: 36px;
+  color: #333333;
+  margin-top: 50px;
+}
+
+.subtitulo {
+  font-size: 24px;
+  color: #666666;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-size: 18px;
+  color: #333333;
+  line-height: 1.5;
+}
+
+.content{
+height: 40vh;
+display:flex;
+flex-direction: column;
+justify-content: left;
+align-items: center;
+}
+h1 {
+  font-family: 'Arial', sans-serif; /* Cambia 'Arial' por cualquier otra fuente que prefieras */
+  font-weight: bold; /* Negrilla */
+  font-size: 2.5em; /* Tamaño de la fuente */
+  color: #333; /* Color de la letra */
+  text-align: center; /* Centrar el texto */
+  margin-top: 20px; /* Espacio superior */
+  margin-bottom: 20px; /* Espacio inferior */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra del texto */
+}
+
+
+.about{
+background: #333333;
+padding: 50px 0;
+}
+
+.box-container2{
+display: flex;
+justify-content:center ;
+padding-top: 50px;
+flex-wrap: wrap;
+
+}
+.box-container2 .box{
+width: 250px;
+padding-bottom:  20px; 
+text-align: center;
+box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
+background: #171717;
+margin: 20px 20px;
+
+}
+
+.box-container2 .box img{
+height: 50px;
+width: 50px;
+object-fit: cover;
+border-radius: 50%;
+margin-top: -50px;
+border: 6px solid #171717;
+
+}
+
+.box-container2 .box h3{
+font-size: 20px;
+color: #fff;;
+padding-top:10px;
+}
+
+.box-container2 .box p{
+font-size: 15px;
+color: #fff;;
+padding:0;
+}
+
+
+.contact{
+background: #666666;
+padding: 50px 0;
+
+}
+.info-text {
+  margin-top: 50px;
+  text-align: left;
+}
+
+.info-text h2 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.info-text p {
+  font-size: 1.2em;
+}
+
+/* Estilo para el formulario de registro */
+.form-group label {
+  font-weight: bold;
+}
